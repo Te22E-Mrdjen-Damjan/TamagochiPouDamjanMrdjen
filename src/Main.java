@@ -1,8 +1,9 @@
+import java.util.Random;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        Random random = new Random();
         System.out.println("Enter your Tamagotchi's name: ");
         String name = scanner.nextLine();
 
@@ -13,7 +14,9 @@ public class Main {
                 System.out.println("1. Feed your Tamagotchi");
                 System.out.println("2. Teach your Tamagotchi a new word");
                 System.out.println("3. Print your Tamagotchi's stats");
-                System.out.println("4. Exit");
+                System.out.println("4. Say HI");
+                System.out.println("5. Exit");
+
 
                 int choice = scanner.nextInt();
                 scanner.nextLine();
@@ -31,8 +34,16 @@ public class Main {
                         tamagotchi.printStats();
                         break;
                     case 4:
+
+                        String randomWord = tamagotchi.getRandomWord();
+                        System.out.println(randomWord);
+                        tamagotchi.getRandomWord();
+                        System.out.println();
+                        break;
+                    case 5:
                         System.out.println("Goodbye!");
                         System.exit(0);
+
                     default:
                         System.out.println("Invalid choice. Please try again.");
                 }
@@ -40,7 +51,7 @@ public class Main {
                 tamagotchi.tick();
 
             }
-        System.out.println("Your Tamagotchi has died");
+        System.out.println(name+" has died");
 
     }
 }

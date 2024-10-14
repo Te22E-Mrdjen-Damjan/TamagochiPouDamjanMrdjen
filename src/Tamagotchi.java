@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Random;
 public class Tamagotchi {
     private int hunger;
     private int boredom;
@@ -23,8 +23,23 @@ public class Tamagotchi {
 
     }
 
+    public String getRandomWord() {
+        if (words.isEmpty()) {
+            System.out.println(name + " doesn't know any words yet!");
+            return null; // Indicate no words learned
+        }
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(words.size());
+        return words.get(randomIndex);
+    }
+
     public void hi(){
-        System.out.println("hi "+ name+ " !");
+        Tamagotchi tamagotchi = new Tamagotchi(name);
+
+        String randomWord = tamagotchi.getRandomWord();
+        System.out.println(randomWord);
+        tamagotchi.getRandomWord();
         reduceBoredom();
     }
 
